@@ -1,0 +1,10 @@
+{
+  "total_images": 1019,
+  "classes": [
+    "Waste container"
+  ],
+  "splits": {
+    "validation": 19,
+    "train": 1000
+  }
+}
