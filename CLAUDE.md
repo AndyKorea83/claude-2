@@ -13,6 +13,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `npm test -- path/to/file.test.ts` — run a single test file
 -->
 
+## Git Workflow
+
+- Every meaningful change gets its own commit with a descriptive message explaining what changed and why.
+- Stage and commit different folders/modules separately with relevant, scoped commit messages.
+- Never batch unrelated changes into a single commit.
+- Push to `origin/master` after each logical unit of work.
+
 ## Architecture
 
 <!-- Describe the high-level structure once code exists, e.g.:
