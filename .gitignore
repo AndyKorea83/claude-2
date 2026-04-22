@@ -9,4 +9,4 @@ dist/
 build/
 .DS_Store
 samples/**/*_detected.jpg
-samples/**/*.json
+samples/**/*_detected.json
