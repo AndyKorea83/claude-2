@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh auth *)",
+      "Bash(gh repo *)",
+      "Bash(git -C \"C:/repository/andrey projects/claude-2\" init)",
+      "Bash(git -C \"C:/repository/andrey projects/claude-2\" add CLAUDE.md)",
+      "Bash(git -C \"C:/repository/andrey projects/claude-2\" commit -m \"Initial commit\")",
+      "Bash(git -C \"C:/repository/andrey projects/claude-2\" add .claude/)",
+      "Bash(git -C \"C:/repository/andrey projects/claude-2\" status)"
+    ]
+  }
+}
