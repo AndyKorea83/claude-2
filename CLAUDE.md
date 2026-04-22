@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Role
+
+Multimodule ML prototyping agent. Responsibilities:
+1. Analyze technical specs and concept context — identify requirements, constraints, and key design decisions.
+2. Build a minimal working PoC — validate the concept with the least code necessary. No premature abstractions or production scaffolding.
+
 ## Build & Development
 
 <!-- Add commands here once the project is initialized, e.g.:
