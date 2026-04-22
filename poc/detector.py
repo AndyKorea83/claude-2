@@ -48,21 +48,18 @@ bbox coordinates are integers as percentage of image dimensions:
 - x1, y1: top-left corner (0-100)
 - x2, y2: bottom-right corner (0-100)
 
-STEP 1 — Invalidity check (apply per bin, in this priority order):
+IMPORTANT: Always list EVERY bin as a detection object in the JSON, even invalid ones. Never return an empty detections array if bins are visible.
 
-  A) SHAPE: Is the bin body round, cylindrical, barrel-shaped, or drum-shaped (circular cross-section)?
-     If you would describe it as "round bin", "barrel bin", "cylindrical bin", or "drum" — it is invalid.
-     Examples: Molok-style underground containers, large barrel bins, any bin where the body is not a rectangular box.
-     → If the body is NOT a rectangular/square box shape: classify as "invalid". Do not classify its fill level.
+Invalidity rules — check each bin:
+1. SHAPE: round/cylindrical/barrel body → "invalid"
+2. PACKAGING: wrapped in plastic film → "invalid"
+3. INDOOR: scene is indoors (warehouse/shop/enclosed storage) → "invalid"
+4. PRODUCT DISPLAY: 3 or more bins of distinctly different colors (yellow, orange, red, blue, green, gray, black — not slight shades of same color) lined up in a display row, OR commercial watermark/brand logo visible → "invalid"
 
-  B) PACKAGING: Is the bin wrapped in plastic shrink-wrap or packaging material?
-     Plastic-wrapped bins are products awaiting deployment — invalid regardless of indoor/outdoor setting.
-     → If YES: "invalid".
-
-  C) INDOOR STORAGE: Is the scene clearly indoors (warehouse shelving, shop floor, enclosed building) with bins in storage?
-     → If YES: "invalid".
-
-  D) Otherwise: proceed to STEP 2.
+Fill level (rectangular bins, active outdoor use, none of the above apply):
+- "empty": no garbage visible inside or on top
+- "full": garbage sticking above the rim OR lid won't close due to contents
+- "overfilled": garbage bags or loose trash on the GROUND around the bin
 
 STEP 2 — Fill level (rectangular/square-bodied bins in any outdoor setting):
 - "empty": no garbage visible inside or on top; lid closed with nothing sticking out, or lid open with visibly empty interior
