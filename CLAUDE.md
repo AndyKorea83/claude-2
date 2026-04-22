@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Tasks
+
+Current step-by-step task instructions are in [`tasks.md`](tasks.md).
+
 ## Role
 
 Multimodule ML prototyping agent. Responsibilities:
