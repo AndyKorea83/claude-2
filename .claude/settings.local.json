@@ -1,13 +1,19 @@
 {
   "permissions": {
     "allow": [
-      "Bash(gh auth *)",
-      "Bash(gh repo *)",
-      "Bash(git -C \"C:/repository/andrey projects/claude-2\" init)",
-      "Bash(git -C \"C:/repository/andrey projects/claude-2\" add CLAUDE.md)",
-      "Bash(git -C \"C:/repository/andrey projects/claude-2\" commit -m \"Initial commit\")",
-      "Bash(git -C \"C:/repository/andrey projects/claude-2\" add .claude/)",
-      "Bash(git -C \"C:/repository/andrey projects/claude-2\" status)"
+      "Bash(gh *)",
+      "Bash(git *)",
+      "Bash(py *)",
+      "Bash(python *)",
+      "Bash(pip *)",
+      "Bash(mkdir *)",
+      "Bash(ls *)",
+      "Bash(find *)",
+      "Bash(file *)",
+      "Bash(rm *)",
+      "Bash(cp *)",
+      "Bash(mv *)",
+      "Bash(start *)"
     ]
   }
 }
