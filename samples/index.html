@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trash Bin Detection — Sample Results</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0f0f0f; color: #e5e5e5; font-family: system-ui, sans-serif; padding: 2rem 1.5rem; }
+  h1 { font-size: 1.6rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .subtitle { color: #888; font-size: 0.9rem; margin-bottom: 2.5rem; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 3rem; padding: 1rem 1.25rem; background: #1a1a1a; border-radius: 8px; }
+  .legend-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; }
+  .swatch { width: 14px; height: 14px; border-radius: 3px; flex-shrink: 0; }
+
+  .folder-section { margin-bottom: 3.5rem; }
+  .folder-section h2 { font-size: 1.2rem; font-weight: 600; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.6rem; border-bottom: 2px solid var(--accent); padding-bottom: 0.5rem; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+  .count { font-weight: 400; color: #888; font-size: 0.9rem; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
+  .card { background: #1a1a1a; border-radius: 8px; overflow: hidden; border: 1px solid #2a2a2a; }
+  .img-wrap { width: 100%; aspect-ratio: 4/3; overflow: hidden; background: #111; }
+  .img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .card-info { padding: 0.75rem 1rem; }
+  .filename { font-size: 0.8rem; color: #666; margin-bottom: 0.4rem; font-family: monospace; }
+  .badges { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.4rem; }
+  .scene { font-size: 0.78rem; color: #888; line-height: 1.4; }
+
+  .badge { font-size: 0.72rem; font-weight: 600; padding: 2px 7px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.03em; }
+  .badge.empty    { background: #14532d; color: #86efac; }
+  .badge.full     { background: #7c2d12; color: #fed7aa; }
+  .badge.overfilled { background: #991b1b; color: #fca5a5; }
+  .badge.invalid  { background: #581c87; color: #d8b4fe; }
+  .badge.garbage  { background: #7c2d12; color: #fdba74; }
+  .badge.unknown  { background: #2a2a2a; color: #888; }
+</style>
+</head>
+<body>
+<h1>Trash Bin Detection — Sample Results</h1>
+<p class="subtitle">VLM-based detection via Gemini 2.0 Flash · OpenRouter API</p>
+
+<div class="legend">
+  <div class="legend-item"><div class="swatch" style="background:#dc2626"></div> Red border — valid bin (empty / full / overfilled)</div>
+  <div class="legend-item"><div class="swatch" style="background:#f97316"></div> Orange border — garbage on the ground</div>
+  <div class="legend-item"><div class="swatch" style="background:#9333ea"></div> Purple border — invalid bin type</div>
+</div>
+
+    <section class="folder-section" style="--accent: #dc2626">
+      <h2><span class="dot" style="background:#dc2626"></span>Overfilled <span class="count">(5 images)</span></h2>
+      <div class="grid">
+        <div class="card">
+          <div class="img-wrap">
+            <img src="critical/1_detected.jpg" loading="lazy" alt="1">
+          </div>
+          <div class="card-info">
+            <div class="filename">1</div>
+            <div class="badges"><span class="badge overfilled">3× overfilled</span> <span class="badge garbage">1× garbage</span></div>
+            <div class="scene">The scene shows multiple overfilled trash bins with garbage bags and loose litter scattered on the ground around them. The bins are located outdoors, possibly in a residential or commercial area.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="img-wrap">
+            <img src="critical/2_detected.jpg" loading="lazy" alt="2">
+          </div>
+          <div class="card-info">
+            <div class="filename">2</div>
+            <div class="badges"><span class="badge overfilled">1× overfilled</span> <span class="badge garbage">2× garbage</span></div>
+            <div class="scene">Outdoor scene with an overfilled trash bin and garbage scattered around it.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="img-wrap">
+            <img src="critical/3_detected.jpg" loading="lazy" alt="3">
+          </div>
+          <div class="card-info">
+            <div class="filename">3</div>
+            <div class="badges"><span class="badge overfilled">3× overfilled</span> <span class="badge garbage">1× garbage</span></div>
+            <div class="scene">The scene shows multiple trash bins that are overfilled with garbage. There are many garbage bags and loose trash scattered on the ground around the bins.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="img-wrap">
+            <img src="critical/4_detected.jpg" loading="lazy" alt="4">
+          </div>
+          <div class="card-info">
+            <div class="filename">4</div>
+            <div class="badges"><span class="badge overfilled">3× overfilled</span> <span class="badge garbage">1× garbage</span></div>
+            <div class="scene">Several trash bins are overfilled with garbage, and there is litter scattered on the ground around them.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="img-wrap">
+            <img src="critical/5_detected.jpg" loading="lazy" alt="5">
+          </div>
+          <div class="card-info">
+            <div class="filename">5</div>
+            <div class="badges"><span class="badge overfilled">1× overfilled</span> <span class="badge garbage">2× garbage</span></div>
+            <div class="scene">Outdoor scene with an overfilled dumpster and garbage on the ground.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="folder-section" style="--accent: #f97316">
+      <h2><span class="dot" style="background:#f97316"></span>Full <span class="count">(5 images)</span></h2>
+      <div class="grid">
+        <div class="card">
+          <div class="img-wrap">
+            <img src="full/1_detected.jpg" loading="lazy" alt="1">
+          </div>
+          <div class="card-info">
+            <div class="filename">1</div>
+            <div class="badges"><span class="badge empty">2× empty</span> <span class="badge full">2× full</span></div>
+            <div class="scene">Four bins of varying sizes and fill levels are lined up against a wall.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="img-wrap">
+            <img src="full/2_detected.jpg" loading="lazy" alt="2">
+          </div>
+          <div class="card-info">
+            <div class="filename">2</div>
+            <div class="badges"><span class="badge overfilled">1× overfilled</span> <span class="badge full">1× full</span></div>
+            <div class="scene">Two overfilled trash bins in an outdoor setting.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="img-wrap">
+            <img src="full/3_detected.jpg" loading="lazy" alt="3">
+          </div>
+          <div class="card-info">
+            <div class="filename">3</div>
+            <div class="badges"><span class="badge full">2× full</span> <span class="badge garbage">1× garbage</span></div>
+            <div class="scene">Two overfilled trash bins with a garbage bag on the ground.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="img-wrap">
+            <img src="full/4_detected.jpg" loading="lazy" alt="4">
+          </div>
+          <div class="card-info">
+            <div class="filename">4</div>
+            <div class="badges"><span class="badge full">3× full</span></div>
+            <div class="scene">Several green dumpsters are lined up and filled with garbage bags.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="img-wrap">
+            <img src="full/5_detected.jpg" loading="lazy" alt="5">
+          </div>
+          <div class="card-info">
+            <div class="filename">5</div>
+            <div class="badges"><span class="badge full">6× full</span></div>
+            <div class="scene">A row of trash bins, some are full.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="folder-section" style="--accent: #16a34a">
+      <h2><span class="dot" style="background:#16a34a"></span>Empty <span class="count">(7 images)</span></h2>
+      <div class="grid">
+        <div class="card">
+          <div class="img-wrap">
+            <img src="empty/1_detected.jpg" loading="lazy" alt="1">
+          </div>
+          <div class="card-info">
+            <div class="filename">1</div>
+            <div class="badges"><span class="badge empty">1× empty</span></div>
+            <div class="scene">Outdoor scene with a large green dumpster. The dumpster appears to be in an industrial or commercial area.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="img-wrap">
+            <img src="empty/2_detected.jpg" loading="lazy" alt="2">
+          </div>
+          <div class="card-info">
+            <div class="filename">2</div>
+            <div class="badges"><span class="badge empty">7× empty</span></div>
+            <div class="scene">Multiple green rectangular trash bins are lined up under a shelter.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="img-wrap">
+            <img src="empty/3_detected.jpg" loading="lazy" alt="3">
+          </div>
+          <div class="card-info">
+            <div class="filename">3</div>
+            <div class="badges"><span class="badge empty">6× empty</span></div>
+            <div class="scene">Multiple trash bins under a shelter, appearing to be empty.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="img-wrap">
+            <img src="empty/4_detected.jpg" loading="lazy" alt="4">
+          </div>
+          <div class="card-info">
+            <div class="filename">4</div>
+            <div class="badges"><span class="badge unknown">no data</span></div>
+            <div class="scene"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="img-wrap">
+            <img src="empty/5_detected.jpg" loading="lazy" alt="5">
+          </div>
+          <div class="card-info">
+            <div class="filename">5</div>
+            <div class="badges"><span class="badge empty">6× empty</span></div>
+            <div class="scene">A row of empty rectangular bins.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="img-wrap">
+            <img src="empty/6_detected.jpg" loading="lazy" alt="6">
+          </div>
+          <div class="card-info">
+            <div class="filename">6</div>
+            <div class="badges"><span class="badge empty">7× empty</span></div>
+            <div class="scene">Multiple empty rectangular trash bins are arranged outdoors.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="img-wrap">
+            <img src="empty/7_detected.jpg" loading="lazy" alt="7">
+          </div>
+          <div class="card-info">
+            <div class="filename">7</div>
+            <div class="badges"><span class="badge empty">8× empty</span></div>
+            <div class="scene">A row of metal dumpsters under a shelter.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="folder-section" style="--accent: #9333ea">
+      <h2><span class="dot" style="background:#9333ea"></span>Invalid <span class="count">(7 images)</span></h2>
+      <div class="grid">
+        <div class="card">
+          <div class="img-wrap">
+            <img src="invalid/1_detected.jpg" loading="lazy" alt="1">
+          </div>
+          <div class="card-info">
+            <div class="filename">1</div>
+            <div class="badges"><span class="badge invalid">5× invalid</span></div>
+            <div class="scene">Multiple trash bins wrapped in plastic film indoors.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="img-wrap">
+            <img src="invalid/2_detected.jpg" loading="lazy" alt="2">
+          </div>
+          <div class="card-info">
+            <div class="filename">2</div>
+            <div class="badges"><span class="badge invalid">11× invalid</span></div>
+            <div class="scene">Storage facility with rows of new bins.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="img-wrap">
+            <img src="invalid/3_detected.jpg" loading="lazy" alt="3">
+          </div>
+          <div class="card-info">
+            <div class="filename">3</div>
+            <div class="badges"><span class="badge invalid">2× invalid</span> <span class="badge garbage">2× garbage</span></div>
+            <div class="scene">Outdoor scene with two round trash bins and some litter on the ground.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="img-wrap">
+            <img src="invalid/4_detected.jpg" loading="lazy" alt="4">
+          </div>
+          <div class="card-info">
+            <div class="filename">4</div>
+            <div class="badges"><span class="badge invalid">4× invalid</span></div>
+            <div class="scene">Four round bins in an outdoor setting.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="img-wrap">
+            <img src="invalid/5_detected.jpg" loading="lazy" alt="5">
+          </div>
+          <div class="card-info">
+            <div class="filename">5</div>
+            <div class="badges"><span class="badge invalid">5× invalid</span></div>
+            <div class="scene">Row of round bins in an outdoor setting.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="img-wrap">
+            <img src="invalid/6_detected.jpg" loading="lazy" alt="6">
+          </div>
+          <div class="card-info">
+            <div class="filename">6</div>
+            <div class="badges"><span class="badge empty">6× empty</span></div>
+            <div class="scene">A row of colorful trash bins are lined up outdoors.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="img-wrap">
+            <img src="invalid/7_detected.jpg" loading="lazy" alt="7">
+          </div>
+          <div class="card-info">
+            <div class="filename">7</div>
+            <div class="badges"><span class="badge invalid">6× invalid</span></div>
+            <div class="scene">Multiple bins of different colors are lined up side by side, indicating a product catalog or dealer display. All bins are classified as invalid.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+</body>
+</html>
